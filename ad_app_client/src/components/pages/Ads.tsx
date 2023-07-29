@@ -23,7 +23,7 @@ function getActions(actionsFn: (params: GridRowParams) => JSX.Element[], layout:
             flex: 0.5
         },
         {
-            field: "category name",
+            field: "categoryName",
             type: "string",
             headerName: "Category Name",
             align: "center",
@@ -31,7 +31,7 @@ function getActions(actionsFn: (params: GridRowParams) => JSX.Element[], layout:
             flex: 1
         },
         {
-            field: "item name",
+            field: "itemName",
             type: "string",
             headerName: "Item Name",
             align: "center",
@@ -165,8 +165,8 @@ const Ads: React.FC = () => {
 export default Ads;
 
 function isUpdated(advertisements: Advertisement[], newAd: Advertisement): boolean {
-    const courseOld = advertisements.find(a => a.id === newAd.id);
-    const courseOldJson = JSON.stringify(courseOld);
-    const courseNewJson = JSON.stringify(newAd);
-    return !!courseOld && courseOldJson !== courseNewJson;
+    const adOld = advertisements.find(a => a.id === newAd.id);
+    const adOldJson = JSON.stringify(adOld);
+    const adNewJson = JSON.stringify(newAd);
+    return !!adOld && adOldJson !== adNewJson;
 }

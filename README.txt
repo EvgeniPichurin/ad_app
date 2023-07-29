@@ -23,22 +23,26 @@ End points:
    Getting all advertisements.
    Returns: the list of advertisements
 
-4. GET http://localhost:8080/ads/category/{{category}}
+4. DELETE http://localhost:8080/ads/{{id}}
+   Remove advertisement by given id.
+   Params: id – positive value [100,000,000 - 999,999,999]
+   Returns: message of the result.
+
+   -------------------------------------------------------------------------------------
+   There are some requests without implementation on the client's side.
+   Instead of these requests, you can use the MUI implementation for searching, sorting and filtering data.
+
+5. GET http://localhost:8080/ads/category/{{category}}
    Getting all advertisements by the given category.
    Params: category – category of the item
    Returns: the list of advertisements under the given price.
 
-5. GET http://localhost:8080/ads/price/{{maxPrice}}
+6. GET http://localhost:8080/ads/price/{{maxPrice}}
    Getting all advertisements under the given price.
    Params: maxPrice – max price
    Returns: the list of advertisements under the given price.
 
-6. GET http://localhost:8080/ads/{{id}}
+7. GET http://localhost:8080/ads/{{id}}
    Getting advertisement by id.
    Params: id – positive value [100,000,000 - 999,999,999]
    Returns: advertisement with the given id or NULL if there is no such id.
-
-7. DELETE http://localhost:8080/ads/{{id}}
-   Remove advertisement by given id.
-   Params: id – positive value [100,000,000 - 999,999,999]
-   Returns: message of the result.

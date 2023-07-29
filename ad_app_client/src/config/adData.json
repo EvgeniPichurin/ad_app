@@ -6,15 +6,15 @@
     "actions"
   ],
   "landscape": [
-    "category name",
-    "item name",
+    "categoryName",
+    "itemName",
     "price",
     "actions"
   ],
   "laptop": [
     "id",
-    "category name",
-    "item name",
+    "categoryName",
+    "itemName",
     "price",
     "actions"
   ]

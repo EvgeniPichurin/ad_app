@@ -13,18 +13,21 @@ public class RestoreService {
             .categoryName("Cars")
             .price(125_000.00)
             .itemName("Mazda")
+            .itemDetails("Color: black, Engine: 1.6")
             .build();
 
     Advertisement houseAd = Advertisement.builder()
             .categoryName("Houses")
             .price(2_500_000.00)
             .itemName("Apartment")
+            .itemDetails("City: Rishon LeZion, Street: Herzel 37, Rooms: 3")
             .build();
 
     Advertisement electricalProductsAd = Advertisement.builder()
-            .categoryName("Electrical products")
+            .categoryName("Electrical")
             .price(2_780.00)
             .itemName("TV")
+            .itemDetails("Firm: LG, Size: 50")
             .build();
 
     public List<Advertisement> getDefaultAds() {

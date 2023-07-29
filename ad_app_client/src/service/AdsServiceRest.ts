@@ -3,7 +3,7 @@ import AdsService from "./AdsService";
 import {Observable, Subscriber} from "rxjs";
 import {Advertisement} from "../model/Advertisement";
 
-const POLLING_INTERVAL = 10000;
+const POLLING_INTERVAL = 20000;
 let curData: any;
 
 function getHeaders(): any {
@@ -14,13 +14,7 @@ function getHeaders(): any {
 
 async function responseProcessing(response: Response): Promise<any> {
     if (response.status < 400) {
-        console.log(response);
-        try {
-            return await response.json();
-        }catch (err) {
-            console.log(err);
-        }
-
+        return await response.json();
     }
     if (response.status >= 500) {
         throw OperationCode.SERVER_UNAVAILABLE
@@ -164,9 +158,7 @@ export default class AdsServiceRest implements AdsService {
     }
 
     private getUrlAll(): RequestInfo {
-        let url = `${this.url}/all`;
-        console.log(url)
-        return url;
+        return `${this.url}/all`;
     }
 
     private getUrlMaxPrice(maxPrice: number) {
