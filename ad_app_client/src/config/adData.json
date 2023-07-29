@@ -1,0 +1,21 @@
+{
+  "minPrice": 0,
+  "portrait": [
+    "item name",
+    "price",
+    "actions"
+  ],
+  "landscape": [
+    "category name",
+    "item name",
+    "price",
+    "actions"
+  ],
+  "laptop": [
+    "id",
+    "category name",
+    "item name",
+    "price",
+    "actions"
+  ]
+}

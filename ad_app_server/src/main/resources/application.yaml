@@ -1,0 +1,11 @@
+app:
+  message:
+    wrong:
+      operation: "Given id does not exists:"
+
+logging:
+  level:
+    exam: trace
+
+server:
+  port: 4000

@@ -1,0 +1,10 @@
+/ad_app_client/.idea/
+/ad_app_client/package-lock.json
+/ad_app_client/node_modules/
+/ad_app_server/.idea
+/ad_app_server/.mvn
+/ad_app_server/mvnw.cmd
+/ad_app_server/target
+ad_app_client.iml
+/.idea/
+/ad_app_server/mvnw
