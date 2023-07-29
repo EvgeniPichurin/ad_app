@@ -1,7 +1,7 @@
 Advertisements project
 ===================================
 
-1.  start server ad_app_server => run AdServerApplication (port 4000)
+1.  start server ad_app_server => run AdServerApplication (port 8080)
 
 2.  start client ad_app_client => run script npm start (port 3000)
 

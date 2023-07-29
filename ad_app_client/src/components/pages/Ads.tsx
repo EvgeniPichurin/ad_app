@@ -9,8 +9,8 @@ import {remove, update} from "../../redux/actions";
 import AdForm from "../forms/AdvertisementForm";
 import ActionConfirmation from "../dialogs/ActionConfirmation";
 import ConfirmationData from "../../model/ConfirmationData";
-import adData from "../../config/adData.json";
 import useLayout from "../../util/useLayout";
+import adData from "../../config/adData.json";
 
 function getActions(actionsFn: (params: GridRowParams) => JSX.Element[], layout: string): any {
     const columns: any = [
@@ -54,7 +54,7 @@ function getActions(actionsFn: (params: GridRowParams) => JSX.Element[], layout:
             getActions: actionsFn
         }
     ]
-    return columns.filter((c: { field: any; }) => (adData as any)[layout].includes(c.field)); //BUG
+    return columns.filter((c: { field: any; }) => (adData as any)[layout].includes(c.field));
 }
 
 const style = {

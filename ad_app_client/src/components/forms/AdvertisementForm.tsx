@@ -1,13 +1,13 @@
 import React from "react";
 import {Advertisement, createAd} from "../../model/Advertisement";
 import adData from "../../config/adData.json";
-import {Grid, TextField, MenuItem, Button, Box, Typography} from "@mui/material";
+import {Grid, TextField, Button, Box, Typography} from "@mui/material";
 
 type Props = {
     submitFn: (advertisement: Advertisement) => void;
     adUpdate?: Advertisement
 }
-const initialAd: Advertisement = createAd(111111, "",
+const initialAd: Advertisement = createAd(0, "",
     0, "", "");
 const AdForm: React.FC<Props> = ({submitFn, adUpdate}) => {
     const {minPrice} = adData;
@@ -105,7 +105,3 @@ const AdForm: React.FC<Props> = ({submitFn, adUpdate}) => {
     </Box>
 }
 export default AdForm;
-
-function getAdItems(items: string[]): React.ReactNode {
-    return items.map(a => <MenuItem value={a} key={a}>{a}</MenuItem>)
-}

@@ -29,7 +29,6 @@ const App: React.FC = () => {
     }, [])
 
     const [flNavigate, setFlNavigate] = React.useState<boolean>(true);
-    const relevantItems: RouteType[] = React.useMemo<RouteType[]>(() => ROUTES, []);
     React.useEffect(() => setFlNavigate(false), [])
 
     function operationCodeHandler() {
@@ -52,17 +51,17 @@ const App: React.FC = () => {
         operationCodeCallback();
     }, [operationCodeCallback])
 
-    return <Box>{flAlert ?
-        <Box>
+    return <Box>
+        {flAlert ? <Box>
             <Alert severity='error'>
                 {alertMessage.current}
             </Alert>
-            {!flUnknown && <LinearProgress/>}
+            {!flUnknown && <LinearProgress />}
         </Box> : <BrowserRouter>
-            <Navigator items={relevantItems}/>
-            {flNavigate && (<Navigate to={ADS_PATH}></Navigate>)}
+            <Navigator items={ROUTES} />
+            {flNavigate && <Navigate to={ADS_PATH}></Navigate>}
             <Routes>
-                {getRoutes(relevantItems)}
+                {getRoutes(ROUTES)}
             </Routes>
         </BrowserRouter>}
     </Box>
@@ -72,13 +71,13 @@ export default App;
 
 function getData(dispatch: any): Subscription {
     return adService.getObservableData().subscribe({
-        next: courses_err => {
-            if (Array.isArray(courses_err)) {
-                dispatch(setAds(courses_err as Advertisement[]));
+        next: ads_err => {
+            if (Array.isArray(ads_err)) {
+                dispatch(setAds(ads_err as Advertisement[]));
                 dispatch(setOperationCode(OperationCode.OK));
             } else {
-                console.log("getting operation code", courses_err)
-                dispatch(setOperationCode(courses_err as OperationCode))
+                console.log("getting operation code", ads_err)
+                dispatch(setOperationCode(ads_err as OperationCode))
             }
         }
     })

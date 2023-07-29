@@ -3,7 +3,7 @@ import AdsService from "./AdsService";
 import {Observable, Subscriber} from "rxjs";
 import {Advertisement} from "../model/Advertisement";
 
-const POLLING_INTERVAL = 5000;
+const POLLING_INTERVAL = 10000;
 let curData: any;
 
 function getHeaders(): any {
@@ -14,7 +14,13 @@ function getHeaders(): any {
 
 async function responseProcessing(response: Response): Promise<any> {
     if (response.status < 400) {
-        return await response.json();
+        console.log(response);
+        try {
+            return await response.json();
+        }catch (err) {
+            console.log(err);
+        }
+
     }
     if (response.status >= 500) {
         throw OperationCode.SERVER_UNAVAILABLE
@@ -40,7 +46,6 @@ export default class AdsServiceRest implements AdsService {
             .catch(err => {
                 if (err == OperationCode.UNKNOWN) {
                     this.observer?.next(OperationCode.UNKNOWN)
-                    this.observer?.complete();
                 } else {
                     this.observer?.next(err)
                 }
@@ -64,7 +69,7 @@ export default class AdsServiceRest implements AdsService {
         (advertisement as any).userId = 1;
         let response: Response;
         try {
-            response = await fetch(this.url, {
+            response = await fetch(this.getAddUrl(), {
                 method: "POST",
                 headers: getHeaders(),
                 body: JSON.stringify(advertisement)
@@ -159,7 +164,9 @@ export default class AdsServiceRest implements AdsService {
     }
 
     private getUrlAll(): RequestInfo {
-        return `${this.url}/all`;
+        let url = `${this.url}/all`;
+        console.log(url)
+        return url;
     }
 
     private getUrlMaxPrice(maxPrice: number) {
@@ -168,5 +175,9 @@ export default class AdsServiceRest implements AdsService {
 
     private getUrlCategory(category: string) {
         return `${this.url}/category/${category}`;
+    }
+
+    private getAddUrl() {
+        return `${this.url}/add`;
     }
 }
